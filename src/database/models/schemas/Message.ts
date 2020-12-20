@@ -1,12 +1,11 @@
 import * as mongoose from 'mongoose';
-import User from './User';
 
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
   encrypted_text: String,
-  sender: User,
-  receivers: [User],
+  sender_id: String,
+  room_id: String,
   createdAt: Date,
 });
 

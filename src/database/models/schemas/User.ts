@@ -7,6 +7,8 @@ const schema = new Schema({
   password: String,
   name: String,
   username:  String,
+  message_ids: [String],
+  room_ids: [String],
   createdAt: Date,
 });
 

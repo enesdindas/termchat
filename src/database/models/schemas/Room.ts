@@ -1,11 +1,11 @@
 import * as mongoose from 'mongoose';
-import User from './User';
 
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
   name: String,
-  users: [User],
+  user_ids: [String],
+  message_ids: [String],
   createdAt: Date,
 });
 

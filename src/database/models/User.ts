@@ -6,9 +6,13 @@ class User {
   constructor(model: IUser) {
     this._UserModel = model;
   }
-  get name(): string {
+  public get name(): string {
     return this._UserModel.name;
   }
+
+  // public sendMessage(): void {
+  //   this._UserModel.name;
+  // }
 }
 Object.seal(User);
 export default User;
