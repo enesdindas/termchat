@@ -10,6 +10,7 @@ import { iocLoader } from './loaders/iocLoader';
 import { swaggerLoader } from './loaders/swaggerLoader';
 import { mongooseLoader } from './loaders/mongooseLoader';
 import { winstonLoader } from './loaders/winstonLoader';
+import { socketLoader } from './loaders/socketLoader';
 
 /**
  * EXPRESS TYPESCRIPT BOILERPLATE
@@ -33,6 +34,7 @@ bootstrapMicroframework({
     mongooseLoader,
     expressLoader,
     swaggerLoader,
+    socketLoader,
   ],
 })
   .then(() => banner(log))

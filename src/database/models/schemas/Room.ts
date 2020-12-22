@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
   name: String,
-  user_ids: [String],
-  message_ids: [String],
+  userIds: [String],
+  messageIds: [String],
   createdAt: Date,
 });
 

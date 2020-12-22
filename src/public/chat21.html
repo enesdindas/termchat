@@ -1,0 +1,21 @@
+<html>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io('http://localhost:8000/chat');
+    socket.emit('joinRoom', { userId: '2', roomId: '1' });
+    
+    socket.on('response', (message) => {
+      console.log(message);
+    });
+
+    function onClick() {
+      socket.emit('message', { encryptedText: 'Hello this is message', roomId: 1, senderId: 2 });
+    }
+  </script>
+  <body>
+    Watch console for events.<br />
+    <button onclick="onClick()">
+      Click to send a save event to the /messages namespace.
+    </button>
+  </body>
+</html>

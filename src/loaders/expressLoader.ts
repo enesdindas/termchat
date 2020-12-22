@@ -1,10 +1,9 @@
-import { Application } from 'express';
+import express, { Application } from 'express';
 import {
   MicroframeworkLoader,
   MicroframeworkSettings,
 } from 'microframework-w3tec';
 import { createExpressServer } from 'routing-controllers';
-
 // import { authorizationChecker } from '../auth/authorizationChecker';
 // import { currentUserChecker } from '../auth/currentUserChecker';
 import { env } from '../env';
@@ -28,7 +27,7 @@ export const expressLoader: MicroframeworkLoader = (
        * We can add options about how routing-controllers should configure itself.
        * Here we specify what controllers should be registered in our express server.
        */
-      controllers: env.app.dirs.controllers,
+      controllers: env.app.dirs.apiControllers,
       middlewares: env.app.dirs.middlewares,
       interceptors: env.app.dirs.interceptors,
 
@@ -41,9 +40,11 @@ export const expressLoader: MicroframeworkLoader = (
 
     // Run application to listen on given port
     if (!env.isTest) {
-      const server = expressApp.listen(env.app.port);
-      settings.setData('express_server', server);
+      // const server = expressApp.listen(env.app.apiPort);
+      settings.setData('express_server', expressApp);
     }
+
+    expressApp.use(express.static(__dirname + '/../public'));
 
     // Here we can set the data for other loaders
     settings.setData('express_app', expressApp);
