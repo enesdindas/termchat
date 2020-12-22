@@ -7,6 +7,7 @@ import {
   Param,
   Res,
   Put,
+  QueryParam,
 } from 'routing-controllers';
 import { IUser } from '../../database/models/interfaces/User';
 import UserRepository from '../../database/repositories/UserRepository';
@@ -79,6 +80,19 @@ export class UsersController {
   ): Promise<mongoose.Collection[] | any> {
     try {
       const data = await userRepo.findById(_id);
+      return successResponse('ok', data, response);
+    } catch (e) {
+      return requestError(e, response);
+    }
+  }
+
+  @Get('/login')
+  public async login(
+    @Res() response: express.Response,
+    @QueryParam('username') username: string
+  ): Promise<mongoose.Collection[] | any> {
+    try {
+      const data = await userRepo.login(username);
       return successResponse('ok', data, response);
     } catch (e) {
       return requestError(e, response);
