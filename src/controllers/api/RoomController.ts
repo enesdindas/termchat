@@ -6,6 +6,7 @@ import {
   Delete,
   Param,
   Res,
+  Put,
 } from 'routing-controllers';
 import { IRoom } from '../../database/models/interfaces/Room';
 import RoomRepository from '../../database/repositories/RoomRepository';
@@ -42,7 +43,7 @@ export class RoomsController {
     }
   }
 
-  @Post('/update/:id')
+  @Put('/update/:id')
   public async update(
     @Res() response: express.Response,
     @Param('id') _id: ObjectID,

@@ -6,6 +6,7 @@ import {
   Delete,
   Param,
   Res,
+  Put,
 } from 'routing-controllers';
 import { IUser } from '../../database/models/interfaces/User';
 import UserRepository from '../../database/repositories/UserRepository';
@@ -42,7 +43,7 @@ export class UsersController {
     }
   }
 
-  @Post('/update/:id')
+  @Put('/update/:id')
   public async update(
     @Res() response: express.Response,
     @Param('id') _id: ObjectID,

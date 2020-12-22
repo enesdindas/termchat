@@ -6,6 +6,7 @@ import {
   Delete,
   Param,
   Res,
+  Put,
 } from 'routing-controllers';
 import { IMessage } from '../../database/models/interfaces/Message';
 import MessageRepository from '../../database/repositories/MessageRepository';
@@ -42,7 +43,7 @@ export class MessagesController {
     }
   }
 
-  @Post('/update/:id')
+  @Put('/update/:id')
   public async update(
     @Res() response: express.Response,
     @Param('id') _id: ObjectID,
