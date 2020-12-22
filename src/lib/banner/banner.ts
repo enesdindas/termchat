@@ -6,6 +6,7 @@ export function banner(log: Logger): void {
     const route = () => `${env.app.schema}://${env.app.host}:${env.app.port}`;
     log.info(``);
     log.info(`Aloha, your app is ready on ${route()}${env.app.routePrefix}`);
+    log.info(`Aloha, your socket is ready on ${route()}/chat`);
     log.info(`To shut it down, press <CTRL> + C at any time.`);
     log.info(``);
     log.info('-------------------------------------------------------');
@@ -13,6 +14,7 @@ export function banner(log: Logger): void {
     log.info(`Version      : ${env.app.version}`);
     log.info(``);
     log.info(`API Info     : ${route()}${env.app.routePrefix}`);
+    log.info(`Socket Info  : ${route()}/chat`);
     if (env.swagger.enabled) {
       log.info(`Swagger      : ${route()}${env.swagger.route}`);
     }

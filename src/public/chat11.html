@@ -8,6 +8,10 @@
       console.log(message);
     });
 
+    socket.on('connection', (message) => {
+      console.log(message);
+    });
+
     function onClick() {
       socket.emit('message', { encryptedText: 'Hello this is message', roomId: 1, senderId: 1 });
     }

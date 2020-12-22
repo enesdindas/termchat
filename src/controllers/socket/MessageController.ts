@@ -24,7 +24,7 @@ export class MessageController {
       });
 
       // Broadcast when a user connects
-      socket.broadcast.to(roomId).emit('message', {
+      socket.broadcast.to(roomId).emit('connection', {
         sender: userId,
         room: roomId,
       });
