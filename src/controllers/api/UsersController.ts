@@ -14,6 +14,7 @@ import { ObjectID } from 'typeorm';
 import mongoose from 'mongoose';
 import express from 'express';
 import { requestError, successResponse } from '../../lib/api/ResponseService';
+import encrypt from '../../lib/encryption/encryption';
 const userRepo = new UserRepository();
 
 @JsonController('/users')
@@ -36,6 +37,7 @@ export class UsersController {
     @Body() user: IUser
   ): Promise<mongoose.Collection[] | any> {
     try {
+      user.password = encrypt(user.password);
       const data = await userRepo.create(user);
       return successResponse('ok', data, response);
     } catch (e) {
